@@ -3,14 +3,13 @@ pipeline {
     stages {
         stage('Clone Git Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/gujjar-aditya/jenkins-ansible.git'
+                git branch: 'main', url: 'https://github.com/nikhil17-ng/jenkins-ansible.git'
             }
         }
 
         stage('Run Ansible Playbook') {
             steps {
                 ansiblePlaybook credentialsId: 'ansible-ssh', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'inventory.ini', playbook: 'install_apache.yml', vaultTmpPath: ''
-            }
         }
     }
 }
